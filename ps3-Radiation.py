@@ -21,8 +21,6 @@ def radiationExposure(start, stop, step):
         start = start + step
     return totalArea
     
-### DOES NOT WORK WHEN STEP IS NOT AN INTEGER. USE WHILE LOOP INSTEAD?
-
 def f(x):
     import math
     return 10*math.e**(math.log(0.5)/5.27 * x)
