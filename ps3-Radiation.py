@@ -13,3 +13,14 @@ def radiationExposure(start, stop, step):
     returns: float, the amount of radiation exposed to 
       between start and stop times.
     '''
+    totalArea = 0
+    for i in range(start, stop, step):
+        rectArea = f(i) * step
+        totalArea = totalArea + rectArea
+    return totalArea
+    
+def f(x):
+    import math
+    return 10*math.e**(math.log(0.5)/5.27 * x)
+    
+print radiationExposure(40,100,1.5)
