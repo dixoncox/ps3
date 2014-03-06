@@ -14,9 +14,11 @@ def radiationExposure(start, stop, step):
       between start and stop times.
     '''
     totalArea = 0
-    for i in range(start, stop, step):
-        rectArea = f(i) * step
+    numRects = int((stop-start)/step)
+    for i in range(numRects):
+        rectArea = f(start) * step
         totalArea = totalArea + rectArea
+        start = start + step
     return totalArea
     
 ### DOES NOT WORK WHEN STEP IS NOT AN INTEGER. USE WHILE LOOP INSTEAD?
@@ -25,4 +27,4 @@ def f(x):
     import math
     return 10*math.e**(math.log(0.5)/5.27 * x)
     
-print radiationExposure(40,100,1.5)
+print radiationExposure(0,4,1)
