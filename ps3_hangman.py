@@ -12,7 +12,7 @@
 import random
 import string
 
-WORDLIST_FILENAME = "words.txt"
+WORDLIST_FILENAME = "/home/gillazo/MOOCs/6.00.1x.Spring.2014/ps3/words.txt"
 
 def loadWords():
     """
