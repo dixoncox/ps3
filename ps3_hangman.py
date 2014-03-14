@@ -53,8 +53,15 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    # FILL IN YOUR CODE HERE...
-    
+    result = True
+    for i in secretWord:
+        if i in lettersGuessed:
+            inList = True
+        else:
+            inList = False
+        result = result and inList
+        print i,result
+    return result    
 
 
 def getGuessedWord(secretWord, lettersGuessed):
@@ -64,8 +71,13 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE...
-
+    guessed = ''
+    for i in secretWord:
+        if i in lettersGuessed:
+            guessed = guessed + i
+        else:
+            guessed = guessed + '_ '
+    return guessed
 
 
 def getAvailableLetters(lettersGuessed):
@@ -74,7 +86,11 @@ def getAvailableLetters(lettersGuessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    # FILL IN YOUR CODE HERE...
+    notGuessed = ''
+    for i in string.ascii_lowercase:
+        if i not in lettersGuessed:
+            notGuessed = notGuessed + i
+    return notGuessed
     
 
 def hangman(secretWord):
@@ -97,8 +113,9 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
-
+    print 'Welcome to the game, Hangman!'
+    print 'I am thinking of a word that is ',len(secretWord),'letters long.'
+    #while 
 
 
 
@@ -108,5 +125,5 @@ def hangman(secretWord):
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-# secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = chooseWord(wordlist).lower()
+hangman(secretWord)
