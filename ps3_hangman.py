@@ -113,6 +113,7 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
+<<<<<<< HEAD
     mistakesMade = 0
     lettersGuessed = []
     print 'Welcome to the game, Hangman!'
@@ -126,6 +127,15 @@ def hangman(secretWord):
             lettersGuessed = lettersGuessed + guess
             print 'Oops! You've already guessed that letter:', getAvailableLetters(lettersGuessed)
             
+=======
+    print 'Welcome to the game, Hangman!'
+    print 'I am thinking of a word that is ',len(secretWord),'letters long.'
+    #while 
+
+
+
+
+>>>>>>> e17f4622f91bf8021d5942a519df977296311da4
 
 # When you've completed your hangman function, uncomment these two lines
 # and run this file to test! (hint: you might want to pick your own
