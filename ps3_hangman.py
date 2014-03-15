@@ -124,9 +124,10 @@ def hangman(secretWord):
         print getAvailableLetters(lettersGuessed)
         guess = raw_input('Please guess a letter:')
         if guess in lettersGuessed:
+            print 'Oops! You\'ve already guessed that letter:', getAvailableLetters(lettersGuessed)
+        elif guess in secretWord:
             lettersGuessed = lettersGuessed + guess
-            print 'Oops! You've already guessed that letter:', getAvailableLetters(lettersGuessed)
-            
+                 
 
     print 'Welcome to the game, Hangman!'
     print 'I am thinking of a word that is ',len(secretWord),'letters long.'
