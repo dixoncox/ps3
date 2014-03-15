@@ -60,7 +60,6 @@ def isWordGuessed(secretWord, lettersGuessed):
         else:
             inList = False
         result = result and inList
-        print i,result
     return result    
 
 
@@ -72,6 +71,7 @@ def getGuessedWord(secretWord, lettersGuessed):
       what letters in secretWord have been guessed so far.
     '''
     guessed = ''
+
     for i in secretWord:
         if i in lettersGuessed:
             guessed = guessed + i
@@ -116,23 +116,39 @@ def hangman(secretWord):
 
     mistakesMade = 0
     lettersGuessed = []
+
+    print
     print 'Welcome to the game, Hangman!'
-    print 'I am thinking of a word that is ',len(secretWord),'letters long.'
-    while (mistakesMade) < 8:
+    print 'I am thinking of a word that is ',len(secretWord),'letters long'
+
+
+    while (mistakesMade) < 8 and not isWordGuessed(secretWord, lettersGuessed):
+        print
         print '_'*11
-        print 'You have',(8-len(lettersGuessed)),'guesses left.'
-        print getAvailableLetters(lettersGuessed)
-        guess = raw_input('Please guess a letter:')
+        print
+        print 'You have',(8-mistakesMade),'guesses left.'
+        print 'Available Letters:', getAvailableLetters(lettersGuessed)
+        rawGuess = raw_input('Please guess a letter: ')
+        guess = rawGuess.lower()
         if guess in lettersGuessed:
-            print 'Oops! You\'ve already guessed that letter:', getAvailableLetters(lettersGuessed)
+            print 'Oops! You\'ve already guessed that letter:', getGuessedWord(secretWord, lettersGuessed)
         elif guess in secretWord:
-            lettersGuessed = lettersGuessed + guess
-                 
+            lettersGuessed.append(guess)
+            print 'Good guess:', getGuessedWord(secretWord, lettersGuessed)
+        else:
+            lettersGuessed.append(guess)
+            print 'Oops! That letter is not in my word:', getGuessedWord(secretWord, lettersGuessed)
+            mistakesMade += 1                 
 
-    print 'Welcome to the game, Hangman!'
-    print 'I am thinking of a word that is ',len(secretWord),'letters long.'
-    #while 
-
+    if isWordGuessed(secretWord,lettersGuessed):
+        print
+        print '_'*11
+        print 'Congratulations, you won!'
+    else:
+        print
+        print '_'*11
+        print 'Sorry, you ran out of guesses. The word was',secretWord
+        
 # When you've completed your hangman function, uncomment these two lines
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
